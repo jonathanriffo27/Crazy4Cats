@@ -1,4 +1,9 @@
 <div id="<%= dom_id post %>">
+  <div class='text-end'>
+    <% Post::Kinds.each do |kind| %>
+      <span class="badge text-bg-danger my-2"> <%= post.reactions.where(kind: kind).count %> - <%= Post::KindsSpanish[kind] %> </span>
+    <% end %>
+  </div>
   <div class="card">
     <div class="row g-0">
       <div class="col-md-4">
@@ -9,7 +14,7 @@
           <h5 class="card-title"><%= post.title %></h5>
           <p class="card-text"><%= post.description %></p>
           <p class="card-text"><small class="text-body-secondary"><%= post.when_went %></small></p>
-          <%= link_to "Mostrar esta publicacion", post %>
+          <%= link_to "Mostrar esta publicacion", post, class:'btn btn-secondary btn-sm' %>
         </div>
       </div>
     </div>

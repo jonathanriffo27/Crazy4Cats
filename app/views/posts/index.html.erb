@@ -1,7 +1,9 @@
-<h1 class='mb-5'>Publicaciones de mininos</h1>
+<h1 class='mb-1'>Publicaciones de mininos</h1>
+<div class="text-end">
+  <%= link_to "Publicar", new_post_path, class:'btn btn-primary mb-1 me-1 btn-sm' %>
+</div>
 <div id="posts" class='d-flex flex-column gap-5'>
   <% @posts.each do |post| %>
     <%= render post %>
   <% end %>
 </div>
-<%= link_to "New post", new_post_path %>

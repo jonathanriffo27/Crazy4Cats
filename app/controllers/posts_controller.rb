@@ -1,15 +1,16 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order(updated_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
   def show
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments.order(updated_at: :desc)
   end
 
   # GET /posts/new
@@ -23,6 +24,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.when_went = Date.current
 
     respond_to do |format|
       if @post.save
@@ -67,6 +69,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:title, :description, :when_went)
+    params.require(:post).permit(:title, :description)
   end
 end
