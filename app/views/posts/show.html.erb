@@ -1,14 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<span class="badge text-bg-danger me-">1 - Me gusta</span>
+<span class="badge text-bg-danger mb-2">0 - No me gusta</span>
 <%= render @post %>
-<%= render 'comments/form' %>
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-  <%= button_to "Destroy this post", @post, method: :delete %>
+<div class="d-flex gap-1 my-3">
   <% Post::Kinds.each do |kind| %>
     <%= button_to "#{Post::KindsSpanish[kind]}",
 new_user_reaction_path(post_id: @post.id, reaction_type:
-"post", kind: kind), method: :post %>
+"post", kind: kind), class:'btn btn-warning btn-sm', method: :post %>
   <% end %>
-  <%= render 'comments/article_comments' %>
+</div>
+<%= render 'comments/form' %>
+<div>
+  <%#= link_to "Edit this post", edit_post_path(@post) %>
+  <%#= link_to "Back to posts", posts_path %>
+  <%#= button_to "Destroy this post", @post, method: :delete %>
+  <%= render 'comments/post_comments' %>
 </div>

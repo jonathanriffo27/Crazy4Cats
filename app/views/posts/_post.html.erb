@@ -1,14 +1,17 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= post.description %>
-  </p>
-  <p>
-    <strong>Publicado:</strong>
-    <%= post.when_went %>
-  </p>
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= image_tag "https://loremflickr.com/320/240/kitten?random=#{post.id}", class:"img-fluid rounded-start" %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= post.title %></h5>
+          <p class="card-text"><%= post.description %></p>
+          <p class="card-text"><small class="text-body-secondary"><%= post.when_went %></small></p>
+          <%= link_to "Mostrar esta publicacion", post %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

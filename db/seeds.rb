@@ -12,7 +12,9 @@ until Post.count == 50
               when_went: Faker::Date.between(from: 10.years.ago, to: Date.today))
 end
 
-i = 0
+User.create(email: 'anonymous@mail.com', password: 'asdasdasd',
+            "password_confirmation": 'asdasdasd', photo: 'https://www.eyedocs.co.uk/components/com_community/assets/user-anon.png', name: 'Anonymous')
+i = 1
 until User.count == 20
   User.create(email: "test#{i}@gmail", password: 'asdasdasd',
               "password_confirmation": 'asdasdasd', photo: Faker::Avatar.image, name:

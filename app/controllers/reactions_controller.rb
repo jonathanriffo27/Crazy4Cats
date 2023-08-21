@@ -1,4 +1,5 @@
 class ReactionsController < ApplicationController
+  before_action :authenticate_user!
   def new_user_reaction
     @user = current_user
     @type = params[:reaction_type]

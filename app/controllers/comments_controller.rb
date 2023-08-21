@@ -2,7 +2,12 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:comment][:post_id])
     @comment = Comment.new(comment_params)
-    @comment.user = current_user
+    @comment.user_id = (if user_signed_in?
+                          current_user.id
+                        else
+                          1
+                        end)
+
     respond_to do |format|
       if @comment.save
         format.html do

@@ -10,11 +10,11 @@
       </ul>
     </div>
   <% end %>
-  <%= f.hidden_field :article_id, value: @article.id %>
+  <%= f.hidden_field :post_id, value: @post.id %>
   <div class = 'field'>
-    <%= f.label :content, as: "Contenido" %>
-    <%= f.text_field :content %>
-    <div class = 'actions'>
-      <%= f.submit %>
+    <%= f.label :content, "Deja tu comentario", class: 'form-label' %>
+    <%= f.text_area :content,  class: 'form-control w-50' %>
+    <div>
+      <%= f.submit 'Publicar', class: 'btn btn-primary btn-sm my-3' %>
     </div>
   <% end %>
